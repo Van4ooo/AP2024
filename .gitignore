@@ -1,0 +1,6 @@
+build
+.idea
+
+src/ap2024.cpp
+main.exe
+ap2024.cp311-win_amd64.pyd
