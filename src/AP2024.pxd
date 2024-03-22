@@ -16,6 +16,8 @@ cdef extern from "AP2024/sorts_algo/sorts_list.h" namespace "sorts":
     cdef cppclass CombSort(BaseSort):
         CombSort() except +;
 
-
     cdef cppclass IntroSort(BaseSort):
         IntroSort() except +;
+
+    cdef cppclass SmoothSort(BaseSort):
+        SmoothSort() except +;

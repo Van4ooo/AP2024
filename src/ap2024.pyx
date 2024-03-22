@@ -1,6 +1,6 @@
 # cython: c_string_type=unicode, c_string_encoding=utf8
 # distutils: language = c++
-from AP2024 cimport BubbleSort, CombSort, BaseSort, IntroSort
+from AP2024 cimport BubbleSort, CombSort, BaseSort, IntroSort, SmoothSort
 
 
 cdef class PySort:
@@ -10,7 +10,8 @@ cdef class PySort:
         del self.ap_sort
 
     def __repr__(self):
-        return f"{self.__class__.__name__}(set={self.set_c}, swap={self.swap_c}, get={self.access_c}, time={self.sort_time})\n"
+        return (f"{self.__class__.__name__}(set/swap={self.set_c + self.swap_c:_}, "
+                f"get={self.access_c:_}, time={self.sort_time:.3}, mem={self.mem_req})\n")
 
     @property
     def swap_c(self):
@@ -49,3 +50,8 @@ cdef class PyCombSort(PySort):
 cdef class PyIntroSort(PySort):
     def __cinit__(self):
         self.ap_sort = <BaseSort*>(new IntroSort())
+
+
+cdef class PySmoothSort(PySort):
+    def __cinit__(self):
+        self.ap_sort = <BaseSort*>(new SmoothSort())

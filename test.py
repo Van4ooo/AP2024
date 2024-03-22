@@ -1,19 +1,27 @@
-from ap2024 import PyBubbleSort, PyCombSort, PyIntroSort
+from ap2024 import PyBubbleSort, PyCombSort, PyIntroSort, PySmoothSort
 
 
 if __name__ == '__main__':
     t = PyCombSort()
-    t.run(10_000_000, "rand")
+    t.run(1_000_000, "rand")
     print(t)
-    t.run(10_000_000, "rev")
+    t.run(1_000_000, "srt")
     print(t)
-    t.run(10_000_000, "sort")
+    t.run(1_000_000, "rev")
     print(t)
 
-    tt = PyIntroSort()
-    tt.run(10_000_000, "rand")
-    print(tt)
-    tt.run(10_000_000, "rev")
-    print(tt)
-    tt.run(10_000_000, "sort")
-    print(tt)
+    ttt = PyIntroSort()
+    ttt.run(1_000_000, "rand")
+    print(ttt)
+    ttt.run(1_000_000, "sort")
+    print(ttt)
+    ttt.run(1_000_000, "rev")
+    print(ttt)
+
+    ttt = PySmoothSort()
+    ttt.run(1_000_000, "rand")
+    print(ttt)
+    ttt.run(1_000_000, "sort")
+    print(ttt)
+    ttt.run(1_000_000, "rev")
+    print(ttt)
