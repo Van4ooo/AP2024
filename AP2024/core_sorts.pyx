@@ -1,7 +1,7 @@
 # cython: c_string_type=unicode, c_string_encoding=utf8
 # distutils: language = c++
-from AP2024 cimport BubbleSort, CombSort, BaseSort, IntroSort, SmoothSort
-
+from core_sorts cimport BubbleSort, CombSort, BaseSort, IntroSort, SmoothSort
+from libcpp.string cimport string
 
 cdef class PySort:
     cdef BaseSort* ap_sort

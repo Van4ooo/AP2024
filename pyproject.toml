@@ -1,0 +1,10 @@
+[project]
+name = "ap2024"
+version = "0.0.1"
+license = {file = "LICENSE"}
+
+description = "Library for graphical comparison of sorting algorithms"
+authors = [{name = "Ivan Rybachyk", email="ivan2005rubachyk@gmail.com"}]
+
+requires-python = ">=3.11"
+readme = "README.md"

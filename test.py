@@ -1,5 +1,4 @@
-from ap2024 import PyBubbleSort, PyCombSort, PyIntroSort, PySmoothSort
-
+from AP2024.sorts import PyBubbleSort, PyCombSort, PyIntroSort, PySmoothSort
 
 if __name__ == '__main__':
     t = PyCombSort()

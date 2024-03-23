@@ -2,13 +2,16 @@ from setuptools import setup, Extension
 from Cython.Build import cythonize
 
 setup(
+    name="AP2024",
+    author="Ivan Rybachyk",
+
     ext_modules=cythonize(Extension(
-        name="ap2024",
-        sources=["src/ap2024.pyx", "src/AP2024/core.cpp",
-                 "src/AP2024/sorts_algo/bubble_sort.cpp",
-                 "src/AP2024/sorts_algo/comb_sort.cpp",
-                 "src/AP2024/sorts_algo/intro_sort.cpp",
-                 "src/AP2024/sorts_algo/smooth_sort.cpp"
+        name="AP2024.sorts",
+        sources=["AP2024/core_sorts.pyx", "AP2024/core-sorts/core.cpp",
+                 "AP2024/core-sorts/sorts_algo/bubble_sort.cpp",
+                 "AP2024/core-sorts/sorts_algo/comb_sort.cpp",
+                 "AP2024/core-sorts/sorts_algo/intro_sort.cpp",
+                 "AP2024/core-sorts/sorts_algo/smooth_sort.cpp"
                  ],
 
         language="c++",
