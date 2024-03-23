@@ -1,6 +1,6 @@
 # cython: c_string_type=unicode, c_string_encoding=utf8
 # distutils: language = c++
-from core_sorts cimport BubbleSort, CombSort, BaseSort, IntroSort, SmoothSort
+from _core_sorts cimport CombSort, BaseSort, IntroSort, SmoothSort
 from libcpp.string cimport string
 
 cdef class PySort:
@@ -35,11 +35,6 @@ cdef class PySort:
 
     def run(self, size_t size, string mode):
         self.ap_sort.cpp_mode_run(size, mode)
-
-
-cdef class PyBubbleSort(PySort):
-    def __cinit__(self):
-        self.ap_sort = <BaseSort*>(new BubbleSort())
 
 
 cdef class PyCombSort(PySort):

@@ -7,7 +7,7 @@ setup(
 
     ext_modules=cythonize(Extension(
         name="AP2024.sorts",
-        sources=["AP2024/core_sorts.pyx", "AP2024/core-sorts/core.cpp",
+        sources=["AP2024/core-sorts/core_sorts.pyx", "AP2024/core-sorts/core.cpp",
                  "AP2024/core-sorts/sorts_algo/bubble_sort.cpp",
                  "AP2024/core-sorts/sorts_algo/comb_sort.cpp",
                  "AP2024/core-sorts/sorts_algo/intro_sort.cpp",

@@ -1,4 +1,10 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+*.pyd
+AP2024/core-sorts/core_sorts.cpp
 build
 .idea
-
-main.exe
+.venv
