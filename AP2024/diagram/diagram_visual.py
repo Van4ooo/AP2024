@@ -1,14 +1,17 @@
 import matplotlib.pyplot as plt
+import mplcyberpunk
 import json
 
-from AP2024.diagram.diagram_object import SortParam, D
-from AP2024.measurement import mode_sort
+from .diagram_object import SortParam, D
+from .config_diagram import name_mode, ylabel_mode
+from ..measurement import mode_sort
 
 
 class Diagram:
     sort_m: dict
 
     def __init__(self, param: SortParam, *args, one_diagram=True):
+        plt.style.use("cyberpunk")
         self.param = param
 
         for sort_m in args:
@@ -27,24 +30,25 @@ class Diagram:
             for sort_now in _sort.sort_algo:
                 self._load(sort_now.__name__)
                 for mode in mode_sort:
-                    self._plot_diagram(self.sort_m[mode], label=f'{sort_now.__name__[2:]}:{mode}')
+                    self._plot_diagram(self.sort_m[mode], label=f'{sort_now.__name__[2:]}')
         else:
             for sort_now in _sort.sort_algo:
                 self._load(sort_now.__name__)
-                self._plot_diagram(self.sort_m[_sort.mode], label=f'{sort_now.__name__[2:]}:{_sort.mode}')
+                self._plot_diagram(self.sort_m[_sort.mode], label=f'{sort_now.__name__[2:]}')
 
     def _plot_diagram(self, mode_measur: dict[str: list[int | float]], label: str):
         plt.plot(self.sort_m["count"], mode_measur[self.param.value],
                  marker='o', linestyle='-', label=label)
 
     def _show_plot(self):
-        plt.title(f'Залежність {self.param.name} від кількості елементів')
+        plt.title(f'Залежність {name_mode[self.param.name]} від кількості елементів')
         plt.xlabel('Кількість елементів')
-        plt.ylabel(f'{self.param.name}')
+        plt.ylabel(ylabel_mode[self.param.name])
 
         plt.legend()
 
         plt.grid(True)
+        mplcyberpunk.add_glow_effects()
         plt.show()
 
     def _load(self, sort_name: str):

@@ -1,7 +1,7 @@
 import dataclasses
 from enum import Enum
 
-from AP2024.sorts import PySort
+from ..sorts import PySort
 
 
 @dataclasses.dataclass

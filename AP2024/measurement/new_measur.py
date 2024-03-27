@@ -1,8 +1,8 @@
 import json
 import progressbar
 
-from AP2024.sorts import PySort
-from AP2024.measurement.config import mode_sort, widgets
+from ..sorts import PySort
+from .config import mode_sort, widgets
 
 
 class Measurement:
