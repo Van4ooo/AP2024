@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 import mplcyberpunk
 import json
 
@@ -9,8 +10,9 @@ from ..measurement import mode_sort
 
 class Diagram:
     sort_m: dict
+    LOG_C: int = 100
 
-    def __init__(self, param: SortParam, *args, one_diagram=True):
+    def __init__(self, param: SortParam, *args, one_diagram=True, draw_log=False):
         plt.style.use("cyberpunk")
         self.param = param
 
@@ -19,11 +21,32 @@ class Diagram:
                 continue
             self.plot_sort(_sort=sort_m)
 
+            if draw_log and not one_diagram:
+                self._draw_log()
+
             if not one_diagram:
                 self._show_plot()
 
         if one_diagram:
+            if draw_log:
+                self._draw_log()
             self._show_plot()
+
+    def _draw_log(self):
+        plt.draw()
+
+        self._load("PyIntroSort")
+        n_elements = np.array(self.sort_m["count"])
+
+        n_elements_normalized = n_elements / max(n_elements) * self.LOG_C
+        y_min, y_max = plt.ylim()
+
+        n_log_n = n_elements_normalized * np.log(n_elements_normalized)
+
+        max_n_log_n = np.max(n_log_n)
+        n_log_n_normalized = (n_log_n / max_n_log_n) * y_max
+
+        plt.plot(n_elements, n_log_n_normalized, 'r--', label='O(n log n)')
 
     def plot_sort(self, _sort: D):
         if _sort.mode == "all":
